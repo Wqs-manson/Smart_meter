@@ -1,31 +1,44 @@
 package com.example.admin.myapplication;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+
+import org.achartengine.GraphicalView;
+import org.achartengine.model.XYSeries;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class FragmentActivity extends AppCompatActivity implements View.OnClickListener {
-    private static Button btn_Show_start,btn_Show_end;
     private static RadioButton main_tab,wave_tab,history_tab;
     private RadioGroup radioGroup; private FrameLayout frameLayout;
     private Fragment_show fragment_1;    private Fragment_chart fragment_2;    private Fragment_history fragment_3;
     private List<Fragment> list;
+
+    private GraphicalView view;
+    private double[] x, y;
+    private int count;
+    private int xTemp, yTemp;
+    private XYSeries xySeries, xySeries2;
+    private LinearLayout chart;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fragment);
         MainActivity.activityList.add(this);
+
+
+
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         //使用管理器开启事务
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -53,6 +66,12 @@ public class FragmentActivity extends AppCompatActivity implements View.OnClickL
         //初始时向容器中添加第一个Fragment对象
         fragmentTransaction.replace(R.id.framelayout,fragment_1);
         fragmentTransaction.commit();
+
+
+
+
+
+
     }
     public void finish() {
         ViewGroup viewGroup = (ViewGroup) getWindow().getDecorView();
@@ -61,19 +80,22 @@ public class FragmentActivity extends AppCompatActivity implements View.OnClickL
     }
 
     public void onClick(View view) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
+       FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         switch (view.getId()) {
             case R.id.main_tab:
                 fragmentTransaction.replace(R.id.framelayout,fragment_1);
+                fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
                 break;
             case R.id.wave_tab:
                 fragmentTransaction.replace(R.id.framelayout,fragment_2);
-                fragmentTransaction.commit();
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction. commit();
                 break;
             case R.id.history_tab:
                 fragmentTransaction.replace(R.id.framelayout,fragment_3);
+                fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
                 break;
             default:

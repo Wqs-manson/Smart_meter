@@ -28,7 +28,7 @@ public class Fragment_show extends Fragment {
     private static EditText Edt_Show_V,Edt_Show_A,Edt_Show_P;
     private static Button btn_Show_start,btn_Show_end;
     private Handler mHandler;
-    private float P,A1,V1;
+    public static float P,A1,V1;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
