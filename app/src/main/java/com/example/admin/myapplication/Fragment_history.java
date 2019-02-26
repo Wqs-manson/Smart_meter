@@ -19,7 +19,7 @@ public class Fragment_history extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //注意View对象的重复使用，以便节省资源
-        mView = inflater.inflate(R.layout.activity_reg,container,false);
+        mView = inflater.inflate(R.layout.activity_history,container,false);
         return mView;
     }
 }

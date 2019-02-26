@@ -1,40 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.admin.myapplication.FragmentActivity">
-    <FrameLayout
+    <android.support.v4.view.ViewPager
         android:id="@+id/framelayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        />
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:orientation="horizontal"
+        >
+    </android.support.v4.view.ViewPager>
+    <View
+        android:background="@color/divider"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="1dp"/>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
 
-        <RadioButton
-            android:id="@+id/main_tab"
-            style="@style/Custom.TabRadioButton"
-            android:checked="true"
-            android:drawableTop="@drawable/main"
-            android:text=" 主界面" />
+            <RadioButton
+                android:id="@+id/main_tab"
+                style="@style/Custom.TabRadioButton"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:background="@color/white"
+                android:drawableTop="@drawable/main"
+                android:text=" 主界面" />
 
-        <RadioButton
-            android:id="@+id/wave_tab"
-            style="@style/Custom.TabRadioButton"
-            android:drawableTop="@drawable/wave"
-            android:text="图表" />
+            <RadioButton
+                android:id="@+id/wave_tab"
+                style="@style/Custom.TabRadioButton"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:drawableTop="@drawable/wave"
+                android:text="图表" />
 
-        <RadioButton
-            android:id="@+id/history_tab"
-            style="@style/Custom.TabRadioButton"
-            android:drawableTop="@drawable/history"
-            android:text="历史" />
-    </RadioGroup>
-</LinearLayout>
+            <RadioButton
+                android:id="@+id/history_tab"
+                style="@style/Custom.TabRadioButton"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:drawableTop="@drawable/history"
+                android:text="历史" />
+        </RadioGroup>
+    </RelativeLayout>
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navigation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/head_layout"
+        app:menu="@menu/main"
+       >
+    </android.support.design.widget.NavigationView>
+
+</android.support.v4.widget.DrawerLayout>

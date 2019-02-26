@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <TextView
         android:text="帐号"
         android:layout_width="wrap_content"
@@ -91,4 +92,12 @@
         android:layout_below="@+id/tex_psw"
         android:layout_alignRight="@+id/tex_psw"
         android:layout_alignEnd="@+id/tex_psw" />
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="注册即代表阅读并同意服务条款"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="26dp" />
 </RelativeLayout>

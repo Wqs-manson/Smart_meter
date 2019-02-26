@@ -21,9 +21,9 @@ public class DBA {
             Class.forName("com.mysql.jdbc.Driver");
             System.out.println("成功加载驱动！");
             System.out.println("子线程runRing");
-            conn = (Connection) DriverManager.getConnection(URL, USER, PWD);
-            Statement stmt = (Statement) conn.createStatement(); //创建Statement对象
+            conn =  DriverManager.getConnection(URL, USER, PWD);
             System.out.println("成功连接到数据库-表-user！");
+           // Statement stmt = conn.createStatement(); //创建Statement对象
            /* String sql = "select * from User ";
             ResultSet rs = stmt.executeQuery(sql);// executeQuery会返回结果的集合，否则返回空值
             System.out.println("user\tpasswd");
@@ -40,10 +40,11 @@ public class DBA {
         }
         return conn;
     }
+    //executeQuery只能用于查询，execute方法才可以执行insert，update，delete操作。
     public static boolean select(Connection conn,String sql) {
         boolean res = false;
         try {
-            Statement stmt = (Statement) conn.createStatement(); //创建Statement对象
+            Statement stmt = conn.createStatement(); //创建Statement对象
             ResultSet rs = stmt.executeQuery(sql);
             if (rs!=null&&rs.first()) {
                 res=true;
@@ -57,7 +58,7 @@ public class DBA {
     public static boolean excel(Connection conn,String sql) {
         boolean res;
         try {
-            Statement stmt = (Statement) conn.createStatement(); //创建Statement对象
+            Statement stmt =  conn.createStatement(); //创建Statement对象
             stmt.execute(sql);
             res=true;
         } catch (SQLException e) {
@@ -65,4 +66,5 @@ public class DBA {
         }
         return res;
     }
+
 }

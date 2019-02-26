@@ -10,23 +10,32 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/app"
         android:label="智能电表"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme_Light">
         </activity>
         <activity
             android:name=".RegActivity"
+            android:theme="@style/AppTheme_Dark"
             android:label="注册" />
-        <activity android:name=".FragmentActivity" />
-        <activity android:name=".ChartActivity"></activity>
+        <activity
+            android:name=".FragmentActivity"
+            android:label="主页面"
+            android:theme="@style/AppTheme_No" />
+        <activity android:name=".Head_layout.head_about" />
+        <activity android:name=".SplashActivity"
+            android:theme="@style/AppTheme_No"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

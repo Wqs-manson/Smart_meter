@@ -1,6 +1,7 @@
 package com.example.admin.myapplication;
 
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -97,8 +98,8 @@ public class Fragment_chart extends Fragment {
         //创建数据源
         XYMultipleSeriesDataset dataset = new XYMultipleSeriesDataset();
         //定义线，
-        xySeries = new XYSeries("111");
-        xySeries2 = new XYSeries("222");
+        xySeries = new XYSeries("电压");
+        xySeries2 = new XYSeries("电流");
         dataset.addSeries(xySeries);
         dataset.addSeries(xySeries2);
         return dataset;
@@ -106,14 +107,19 @@ public class Fragment_chart extends Fragment {
     public XYMultipleSeriesRenderer getRenderer() {
         XYMultipleSeriesRenderer renderer = new XYMultipleSeriesRenderer();
         renderer.setXTitle("时间");
-        renderer.setYTitle("温度");
-        renderer.setAxisTitleTextSize(30);//设置轴标题文本大小
-        renderer.setChartTitle("测试");//设置图表标题
-        renderer.setChartTitleTextSize(30);//设置图表标题文字的大小
-        renderer.setLabelsTextSize(18);//设置标签的文字大小
-        renderer.setLegendTextSize(30);//设置图例文本大小
-        renderer.setPointSize(3f);//设置点的大小
+        renderer.setYTitle("大小");
+        renderer.setAxisTitleTextSize(60);//设置轴标题文本大小
+        renderer.setChartTitle("图表");//设置图表标题
+        renderer.setAxesColor(Color.BLUE);//设置坐标轴颜色
+        renderer.setMargins(new int[]{40,150,35,50});//设置上下左右的距离
 
+
+        renderer.setChartTitleTextSize(40);//设置图表标题文字的大小
+        renderer.setLabelsTextSize(38);//设置标签的文字大小
+        renderer.setLegendTextSize(40);//设置图例文本大小
+        renderer.setPointSize(3f);//设置点的大小
+        renderer.setXLabelsAlign(Paint.Align.RIGHT);//设置刻度线与X轴之间的相对位置关系
+        renderer.setYLabelsAlign(Paint.Align.RIGHT);//设置刻度线与Y轴之间的相对位置关系
         renderer.setYAxisMin(0);//设置y轴最小值是0
         renderer.setYAxisMax(15);//设置Y轴的最大值为15，   0--15
 
@@ -121,7 +127,8 @@ public class Fragment_chart extends Fragment {
         renderer.setXAxisMax(20);  //设置X轴的屏幕显示长度，
         renderer.setShowGrid(true);//显示网格
         renderer.setApplyBackgroundColor(true);
-        renderer.setBackgroundColor(Color.BLACK);
+        renderer.setBackgroundColor(Color.WHITE);//背景
+        renderer.setMarginsColor(Color.WHITE);//四边
 
         //线的属性
         XYSeriesRenderer r = new XYSeriesRenderer();//(类似于一条线对象)
@@ -139,7 +146,6 @@ public class Fragment_chart extends Fragment {
         r2.setDisplayChartValues(true);//将点的值显示出来
         r2.setChartValuesSpacing(10);//显示的点的值与图的距离
         r2.setChartValuesTextSize(25);//点的值的文字大小
-
         renderer.addSeriesRenderer(r);
         renderer.addSeriesRenderer(r2);
         return renderer;
